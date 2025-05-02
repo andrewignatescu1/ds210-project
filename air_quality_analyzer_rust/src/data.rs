@@ -11,7 +11,7 @@ use csv::Reader;
 /// Represents one cleaned data row containing only the fields needed for analysis and visualization.
 #[derive(Debug, Clone)]
 pub struct PollutionRecord {
-    /// Abbreviated code for place name (e.g., A7 → Upper West Side)
+    /// Abbreviated code for place name (e.g., A7 to  Upper West Side)
     pub place_abbreviation: String,
     /// Year extracted from Time Period (used for timeline-based plotting)
     pub year: u32,
@@ -54,7 +54,7 @@ pub fn load_pollution_data(filepath: &str) -> Result<(Vec<PollutionRecord>, Hash
             format!("A{}", id)
         }).clone();
 
-        // Extract the starting year from time range string (e.g., "Winter 2014-15" → 2014)
+        // Extract the starting year from time range string (e.g., "Winter 2014-15" to 2014)
         let year = raw.time_period
             .split_whitespace()
             .last()
@@ -72,11 +72,9 @@ pub fn load_pollution_data(filepath: &str) -> Result<(Vec<PollutionRecord>, Hash
         });
     }
 
-    // Flip mapping: abbreviation → full place name
     let abbr_to_full: HashMap<String, String> =
         abbrev_map.into_iter().map(|(place, abbr)| (abbr, place)).collect();
 
-    // 🧠 Print the abbreviation legend for clarity (optional, for debug/logging)
     println!("\nAbbreviation Legend:");
     for (abbr, name) in &abbr_to_full {
         println!("{} → {}", abbr, name);
