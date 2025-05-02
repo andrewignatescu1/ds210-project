@@ -10,11 +10,11 @@ use visualize::{draw_matrix_heatmap, draw_top_clean_and_dirty_bar_chart};
 
 /// Main entry point of the application.
 ///
-///  Workflow
-/// 1. Load cleaned pollution data from CSV
-/// 2. Analyze best and worst locations
-/// 3. Print top 3 cleanest and most polluted neighborhoods (with full names)
-/// 4. Generate:
+/// Workflow
+/// Load cleaned pollution data from CSV
+/// Analyze best and worst locations
+/// Print top 3 cleanest and most polluted neighborhoods (with full names)
+///  Generate:
 ///     - Matrix-style heatmap PNG
 ///     - Horizontal bar chart PNG
 fn main() -> Result<(), Box<dyn std::error::Error>> {
@@ -49,8 +49,6 @@ mod tests {
     use crate::analyze::{analyze_air_quality, print_top_clean_and_dirty};
     use std::collections::HashMap;
 
-    /// Unit test for the analyze_air_quality function.
-    ///
     /// Purpose
     /// Verifies that the function correctly identifies the cleanest and dirtiest locations
     /// by computing average pollution scores.
@@ -78,9 +76,6 @@ mod tests {
     ///
     ///
     /// Ensures that the function runs without panicking or crashing when printing top results.
-    /// (Does not capture printed output; just checks the function executes successfully.)
-    ///
-    ///
     /// - Creates mock data for 5 locations with varying pollution
     /// - Passes in a dummy map of abbreviations to full names
     /// - Confirms that the function runs without error
